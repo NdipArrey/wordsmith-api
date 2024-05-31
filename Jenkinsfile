@@ -18,22 +18,18 @@ pipeline {
         }
     } 
 
-    environment {
-        CI = false //do not treat errors as warnings
-        SONARSCANNER = "SonarScanner"
-    }
-
-    stages {
+     stages {  
 
         stage('Code Review') {
             environment {
-                scannerHome = tool "SonarScanner";
+                scannerHome = tool "SonarScanner"
             }
             steps {
-                withSonarQubeEnv('Sonarqube') 
-                sh "${scannerHome}/bin/sonar-scanner"         
-               
+                withSonarQubeEnv('Sonarqube') {
+                  sh "${scannerHome}/bin/sonar-scanner" 
+                }
             }
         } 
     }
+
 }
