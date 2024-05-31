@@ -8,15 +8,13 @@ pipeline {
     tools {
         maven 'Maven' 
     }
+
     stages {
-        
         stage('Build') {
-            
             steps {
                 sh 'mvn clean package'
             }
         }
-    } 
 
         stage('Code Review') {
             environment {
@@ -24,9 +22,9 @@ pipeline {
             }
             steps {
                 withSonarQubeEnv('Sonarqube') {
-                  sh "${scannerHome}/bin/sonar-scanner" 
-                }
+                    sh "${scannerHome}/bin/sonar-scanner" 
+                } 
             }
-        } 
-    
-}
+        }
+    }
+           
