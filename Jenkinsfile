@@ -18,8 +18,6 @@ pipeline {
         }
     } 
 
-     stages {  
-
         stage('Code Review') {
             environment {
                 scannerHome = tool "SonarScanner"
@@ -30,6 +28,5 @@ pipeline {
                 }
             }
         } 
-    }
-
+    
 }
